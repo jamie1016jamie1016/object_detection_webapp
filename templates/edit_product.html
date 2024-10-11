@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Product - Product App{% endblock %}
+
+{% block content %}
+<h1>Edit Product</h1>
+<form method="post">
+  ID: {{ product['id'] }}<br>
+  Name: <input type="text" name="name" value="{{ product['name'] }}" required><br>
+  Price: <input type="number" step="0.01" name="price" value="{{ product['price'] }}" required><br>
+  In Stock: <input type="checkbox" name="in_stock" {% if product['in_stock'] %}checked{% endif %}><br>
+  <input type="submit" value="Update Product">
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Product List - Product App{% endblock %}
+
+{% block content %}
+<h1>Product List</h1>
+<ul>
+  {% for product in products %}
+    <li>
+      ID: {{ product['id'] }}, Name: {{ product['name'] }}, Price: ${{ product['price'] }}, In Stock: {{ 'Yes' if product['in_stock'] else 'No' }}
+      <a href="{{ url_for('edit_product', product_id=product['id']) }}">Edit</a>
+      <a href="{{ url_for('delete_product_web', product_id=product['id']) }}">Delete</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('add_product') }}">Add New Product</a>
+{% endblock %}

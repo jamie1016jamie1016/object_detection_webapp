@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Detection Result - Product App{% endblock %}
+
+{% block content %}
+<h1>Detection Result</h1>
+<p>Image processed successfully!</p>
+<img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Result Image">
+{% endblock %}

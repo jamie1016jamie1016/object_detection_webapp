@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Product App{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Product App</h1>
+<p>Select an option:</p>
+<a href="{{ url_for('list_products') }}" class="button">See All Products</a>
+<a href="{{ url_for('upload_image') }}" class="button">Upload Image</a>
+{% endblock %}
+
+{% block head %}
+<style>
+    h1 {
+        margin-top: 50px;
+    }
+    .button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 18px;
+        margin: 10px;
+        text-decoration: none;
+        color: white;
+        background-color: #28a745;
+        border-radius: 5px;
+    }
+    .button:hover {
+        background-color: #218838;
+    }
+</style>
+{% endblock %}

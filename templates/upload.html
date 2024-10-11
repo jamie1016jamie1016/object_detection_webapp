@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Image - Product App{% endblock %}
+
+{% block content %}
+<h1>Upload an Image for Object Detection</h1>
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*"><br><br>
+    <input type="submit" value="Upload">
+</form>
+{% endblock %}
