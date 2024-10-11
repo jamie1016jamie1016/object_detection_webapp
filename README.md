@@ -1,6 +1,5 @@
 
-# Full Stack Developer Coding Test - 
-# Object Detection and CRUD API
+# Full Stack Developer Coding Test - Object Detection and CRUD API
 
 ## Overview
 This project demonstrates a full-stack application using **Python** and **Flask**, with image processing, object detection, and CRUD operations. It allows users to upload images of shelves, detects products using a pre-trained YOLO model, and manages product information through a RESTful API.
