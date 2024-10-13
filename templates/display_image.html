@@ -5,5 +5,5 @@
 {% block content %}
 <h1>Detection Result</h1>
 <p>Image processed successfully!</p>
-<img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Result Image">
+<img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Result Image" style="width: auto; height: 400px; display: block; margin: 0 auto;">
 {% endblock %}

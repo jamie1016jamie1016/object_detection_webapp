@@ -23,7 +23,7 @@ This project demonstrates a full-stack application using **Python** and **Flask*
 
 ## Requirements
 Before you start, ensure you have the following installed:
-- **Python 3.x**
+- **Python 3.11.9**
 - **pip** (Python package manager)
 
 ---
@@ -32,8 +32,8 @@ Before you start, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/jamie1016jamie1016/object_detection_webapp.git
 cd your-repo-name
+git clone https://github.com/jamie1016jamie1016/object_detection_webapp.git
 ```
 
 ### 2. Set up the Virtual Environment
