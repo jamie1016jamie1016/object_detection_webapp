@@ -1,28 +1,28 @@
-
 # Full Stack Developer Coding Test - Object Detection and CRUD API
 
 ## Overview
-This project demonstrates a full-stack application using **Python** and **Flask**, with image processing, object detection, and CRUD operations. It allows users to upload images of shelves, detects products using a pre-trained YOLO model, and manages product information through a RESTful API.
+This project is a full-stack web application utilizing **Python** and **Flask** to integrate image processing, object detection, and CRUD operations. Users can upload images of shelves to detect products using a pre-trained YOLO model and manage product information through a RESTful API.
 
 ---
 
 ## Features
-1. **Object Detection:**
-   - Detects objects on shelves using YOLO (You Only Look Once) model.
-   - Bounding boxes are drawn on the image to highlight detected products.
+1. **Object Detection**:
+   - Uses the YOLO (You Only Look Once) model to detect objects on shelves.
+   - Draws bounding boxes on the uploaded images to highlight detected products.
 
-2. **CRUD API:**
-   - Flask-based API to create, retrieve, update, and delete product information.
+2. **CRUD API**:
+   - RESTful API built with Flask to manage product information.
+   - Supports creating, retrieving, updating, and deleting products.
    - Product data includes name, price, and stock status.
 
-3. **Augmented Reality Simulation:**
-   - Overlays product information on the detected objects in the image.
-   - Simulates AR by displaying product details (price, availability) next to the detected items.
+3. **Augmented Reality Simulation**:
+   - Overlays product information on detected items.
+   - Simulates an AR experience by displaying product details (price, availability) next to detected products.
 
 ---
 
 ## Requirements
-Before you start, ensure you have the following installed:
+Ensure you have the following installed before starting:
 - **Python 3.11.9**
 - **pip** (Python package manager)
 
@@ -32,11 +32,11 @@ Before you start, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-cd your-repo-name
 git clone https://github.com/jamie1016jamie1016/object_detection_webapp.git
+cd object_detection_webapp
 ```
 
-### 2. Set up the Virtual Environment
+### 2. Set Up the Virtual Environment
 Create and activate a virtual environment:
 ```bash
 python -m venv env
@@ -44,7 +44,7 @@ source env/bin/activate  # For macOS/Linux
 # For Windows: env\Scripts\activate
 ```
 
-### 3. Install the Dependencies
+### 3. Install Dependencies
 Install the required Python packages:
 ```bash
 pip install -r requirements.txt
@@ -60,50 +60,55 @@ python app.py
 ```
 
 ### 2. Access the Web Application
-Open a web browser and go to:
+Open your web browser and navigate to:
 ```
 http://127.0.0.1:5000
 ```
 
-### 3. Functionality
-- **Home Page:**
-  - Provides links to navigate between product management and image upload functionalities.
-  
-- **Upload Image:**
-  - Allows users to upload an image of shelves for object detection.
-  
-- **Products Page:**
-  - Displays all products and provides functionality to add, update, or delete product information.
+### 3. Functionality Overview
+- **Home Page**:
+  - Links to navigate between product management and image upload features.
+- **Upload Image**:
+  - Upload an image of shelves to run object detection.
+- **Products Page**:
+  - View, add, update, or delete product information.
 
 ---
 
 ## API Endpoints
 
-- **Create Product (POST):**
+- **Create Product (POST)**:
   ```http
   POST /api/products
   ```
   - Request Body: 
     ```json
     {
-      "id": "001",
       "name": "Product Name",
       "price": 10.0,
       "in_stock": true
     }
     ```
 
-- **Retrieve Product (GET):**
+- **Retrieve Product (GET)**:
   ```http
   GET /api/products/<product_id>
   ```
 
-- **Update Product (PUT):**
+- **Update Product (PUT)**:
   ```http
   PUT /api/products/<product_id>
   ```
+  - Request Body: 
+    ```json
+    {
+      "name": "Updated Product Name",
+      "price": 12.5,
+      "in_stock": false
+    }
+    ```
 
-- **Delete Product (DELETE):**
+- **Delete Product (DELETE)**:
   ```http
   DELETE /api/products/<product_id>
   ```
@@ -112,18 +117,18 @@ http://127.0.0.1:5000
 
 ## Technologies Used
 - **Python 3.x**: Backend logic and API development.
-- **Flask**: Web framework used to build the API and frontend interface.
-- **YOLOv8**: Pre-trained object detection model for identifying objects on shelves.
-- **OpenCV**: Library for image processing and object detection.
-- **Pillow (PIL)**: Image processing library used for image resizing and handling various formats.
-- **HTML/CSS**: Frontend UI elements.
+- **Flask**: Web framework for API and frontend interface.
+- **YOLOv8**: Pre-trained object detection model for detecting products.
+- **OpenCV**: Image processing and object detection.
+- **Pillow (PIL)**: Image resizing and handling various formats.
+- **HTML/CSS**: Frontend UI components.
 
 ---
 
 ## Future Improvements
-- Implement a user login system for product management.
-- Add more advanced AR effects such as 3D animations.
-- Improve the UI and integrate a proper database instead of in-memory storage.
+- Implement a user authentication system for enhanced product management security.
+- Add more advanced AR effects, such as 3D animations.
+- Improve UI/UX and replace in-memory storage with a persistent database (e.g., SQLite, PostgreSQL).
 
 ---
 
@@ -133,7 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## Contact
-For any questions or inquiries, please contact:
+For questions or inquiries, please contact:
 - **Name**: Jamie (Shih-Hsuan Yan)
-- **Email**: jamieysh0910@gmail.com
+- **Email**: [jamieysh0910@gmail.com](mailto:jamieysh0910@gmail.com)
 - [GitHub Profile](https://github.com/jamie1016jamie1016)
