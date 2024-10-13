@@ -5,6 +5,8 @@ from ultralytics import YOLO
 from shutil import copyfile
 from werkzeug.utils import secure_filename
 from PIL import Image, UnidentifiedImageError
+from PIL import Image as PILImage, ImageDraw, ImageFont
+import random
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -277,8 +279,10 @@ def overlay_product_info(image_path, product_infos):
         except IOError:
             font = ImageFont.load_default()
     
-        # Calculate text size
-        text_width, text_height = draw.textsize(label, font=font)
+        # Calculate text size using textbbox method
+        text_bbox = draw.textbbox((xmin, ymin), label, font=font)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
     
         # Position text above the bounding box
         text_x = xmin
