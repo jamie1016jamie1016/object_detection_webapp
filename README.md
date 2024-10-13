@@ -23,7 +23,7 @@ This project is a full-stack web application utilizing **Python** and **Flask** 
 
 ## Requirements
 Ensure you have the following installed before starting:
-- **Python 3.11.9**
+- **Python 3.x**
 - **pip** (Python package manager)
 
 ---
