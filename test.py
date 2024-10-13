@@ -42,6 +42,15 @@ yolo_model = YOLO('yolov8n.pt')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 def allowed_file(filename):
+    """
+    Check if a file has an allowed extension.
+
+    Args:
+        filename (str): Name of the file to check.
+    
+    Returns:
+        bool: True if the file is allowed, False otherwise.
+    """
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -192,6 +201,15 @@ def process_image(image_path):
     return output_image_path
 
 def perform_object_detection(image_path):
+    """
+    Perform object detection using YOLOv8 model.
+
+    Args:
+        image_path (str): Path to the input image.
+    
+    Returns:
+        list: List of detected objects containing class names, bounding boxes, and scores.
+    """
     try:
         results = yolo_model(image_path)
         detections = []
