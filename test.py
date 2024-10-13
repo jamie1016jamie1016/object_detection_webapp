@@ -1,3 +1,16 @@
+"""
+Flask application for object detection and product management.
+
+Features:
+- CRUD API for managing products
+- Web interface for product management
+- YOLOv8 model for detecting objects in uploaded images
+- Bounding box overlay on detected objects with product information
+
+Technologies Used: Flask, YOLOv8, OpenCV, PIL, SQL-like product storage.
+"""
+
+
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 import os
 import cv2
