@@ -1,13 +1,13 @@
 # Object Detection and CRUD API
 
 ## Overview
-This project is a full-stack web application utilizing **Python** and **Flask** to integrate image processing, object detection, and CRUD operations. Users can upload images of shelves to detect products using a pre-trained YOLO model and manage product information through a RESTful API.
+This project is a full-stack web application utilizing **Python** and **Flask** to integrate image processing, object detection, and CRUD operations. Users can upload images to detect products using a pre-trained YOLO model and manage product information through a RESTful API.
 
 ---
 
 ## Features
 1. **Object Detection**:
-   - Uses the YOLO (You Only Look Once) model to detect objects on shelves.
+   - Uses the YOLO (You Only Look Once) model to detect objects.
    - Draws bounding boxes on the uploaded images to highlight detected products.
 
 2. **CRUD API**:
