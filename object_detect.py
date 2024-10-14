@@ -4,7 +4,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # Load the image using OpenCV
-image_path = '/Users/jamie/Downloads/Unknown.jpg'  
+image_path = '/Users/jamie/Desktop/untitled folder/16AB_2.jpg'
 image = cv2.imread(image_path)
 
 # Check if the image was loaded successfully
