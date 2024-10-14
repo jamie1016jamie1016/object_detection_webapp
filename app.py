@@ -315,7 +315,7 @@ def get_product_info(detections):
 
 def overlay_product_info(image_path, product_infos):
     """
-    Overlay bounding boxes and product information onto the image.
+    Overlay bounding boxes and product information onto the image, with different colors for each product type.
 
     Args:
         image_path (str): Path to the input image.
@@ -328,56 +328,71 @@ def overlay_product_info(image_path, product_infos):
     image = Image.open(image_path).convert("RGB")
     draw = ImageDraw.Draw(image)
     
-    # Light green color for bounding box (RGB)
-    box_color = (144, 238, 144)
-
-    # Draw bounding boxes for all detected objects
-    for info in product_infos:
-        xmin, ymin, xmax, ymax = info['bbox']
-        draw.rectangle([xmin, ymin, xmax, ymax], outline=box_color, width=3)
+    # Define a set of colors to be used for different bounding boxes (RGB)
+    colors = [
+        (255, 0, 0),   # Red
+        (0, 255, 0),   # Green
+        (0, 0, 255),   # Blue
+        (255, 255, 0), # Yellow
+        (255, 165, 0), # Orange
+        (0, 255, 255), # Cyan
+        (255, 0, 255)  # Magenta
+    ]
     
-    # Display product info only once per product type
+    # Assign a different color to each unique product type
     displayed_products = {}
+    color_index = 0
+    
     for info in product_infos:
         class_name = info['class_name']
         price = info['price']
         in_stock = 'Yes' if info['in_stock'] else 'No'
-    
+        color = colors[color_index % len(colors)]  # Cycle through colors
+
         if class_name not in displayed_products:
             displayed_products[class_name] = {
                 'price': price,
                 'in_stock': in_stock,
-                'bboxes': []
+                'bboxes': [],
+                'color': color  # Assign color for this product type
             }
+            color_index += 1
         displayed_products[class_name]['bboxes'].append(info['bbox'])
-    
+
+    # Draw bounding boxes and labels
     for class_name, info in displayed_products.items():
         price = info['price']
         in_stock = info['in_stock']
         bboxes = info['bboxes']
-        
+        color = info['color']
+
+        # Draw bounding boxes for this product
+        for bbox in bboxes:
+            xmin, ymin, xmax, ymax = bbox
+            draw.rectangle([xmin, ymin, xmax, ymax], outline=color, width=3)
+
         # Choose largest bounding box for text positioning
         largest_bbox = max(bboxes, key=lambda bbox: (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]))
         xmin, ymin, xmax, ymax = largest_bbox
         
         # Create label with product info
         label = f"{class_name.capitalize()}: ${price}, In Stock: {in_stock}"
-    
+
         # Load font
         font_size = 20
         try:
             font = ImageFont.truetype("arial.ttf", font_size)
         except IOError:
             font = ImageFont.load_default()
-    
+
         # Calculate text size and position
         text_bbox = draw.textbbox((xmin, ymin), label, font=font)
         text_width = text_bbox[2] - text_bbox[0]
         text_height = text_bbox[3] - text_bbox[1]
-    
+
         text_x = xmin
         text_y = ymin - text_height - 5
-    
+
         # Adjust text position if it goes beyond image boundaries
         if text_x + text_width > image.width:
             text_x = image.width - text_width - 5
@@ -388,16 +403,17 @@ def overlay_product_info(image_path, product_infos):
 
         # Draw background for text
         draw.rectangle([text_x - 2, text_y - 2, text_x + text_width + 2, text_y + text_height + 2], fill=(255, 255, 255))
-    
-        # Draw product info text
-        draw.text((text_x, text_y), label, fill=(0, 0, 0), font=font)
-    
+
+        # Draw product info text using the same color as the bounding box
+        draw.text((text_x, text_y), label, fill=color, font=font)
+
     # Save output image
     output_image_filename = 'output_' + os.path.basename(image_path)
     output_image_path = os.path.join(app.config['UPLOAD_FOLDER'], output_image_filename)
     image.save(output_image_path)
-    
+
     return output_image_path
+
 
 def resize_image(image_path, max_size=(1024, 1024)):
     """
